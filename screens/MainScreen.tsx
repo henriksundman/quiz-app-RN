@@ -12,7 +12,6 @@ const styles = StyleSheet.create({
 	card: {
 		marginTop: 20,
 		alignItems: 'center',
-		width: '90%',
 		height: '90%',
 		elevation: 4,
 		backgroundColor: 'white',

@@ -9,7 +9,6 @@ export const StartView = () => {
 
 	const start = (): void => {
 		gameCtx.gameStartHandler(numQuestions);
-		console.log('start', gameCtx.isGameStarted);
 	};
 
 	return (
