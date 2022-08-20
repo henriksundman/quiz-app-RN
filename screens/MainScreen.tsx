@@ -10,7 +10,7 @@ export const MainScreen = ({ children }: MainScreenProps) => {
 
 const styles = StyleSheet.create({
 	card: {
-		flexDirection: 'column',
+		marginTop: 20,
 		alignItems: 'center',
 		width: '90%',
 		height: '90%',

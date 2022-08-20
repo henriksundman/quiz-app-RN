@@ -1,12 +1,16 @@
-import { useState, useContext } from 'react';
-
-import { Button, StyleSheet, Text, View } from 'react-native';
+import { useContext, useState } from 'react';
+import { StyleSheet, Text, View } from 'react-native';
 
 import { GameContext } from '../store/game-context';
 
 export const StartView = () => {
 	const gameCtx = useContext(GameContext);
 	const [numQuestions, setNumQuestions] = useState(5);
+
+	const start = (): void => {
+		gameCtx.gameStartHandler(numQuestions);
+		console.log('start', gameCtx.isGameStarted);
+	};
 
 	return (
 		<View style={styles.container}>
@@ -34,13 +38,16 @@ export const StartView = () => {
 				</View>
 			</View>
 			<Text style={styles.text}>Press Start to begin</Text>
-			<Button title="Start" />
+			<Text style={styles.start} onPress={start}>
+				Start
+			</Text>
 		</View>
 	);
 };
 
 const styles = StyleSheet.create({
 	container: {
+		marginTop: 50,
 		flex: 1,
 		justifyContent: 'space-between',
 	},
@@ -67,5 +74,16 @@ const styles = StyleSheet.create({
 		padding: 5,
 		borderWidth: 1,
 		borderRadius: 6,
+	},
+	start: {
+		alignSelf: 'center',
+		fontSize: 20,
+		width: 100,
+		paddingVertical: 10,
+		paddingHorizontal: 20,
+		marginBottom: 100,
+		borderWidth: 1,
+		borderRadius: 6,
+		textAlign: 'center',
 	},
 });
