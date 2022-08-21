@@ -1,7 +1,5 @@
-import { Text, View } from 'react-native';
-import { StatusBar } from 'expo-status-bar';
 import { useContext } from 'react';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 
 import { GameOverView } from '../components/GameOverView';
 import { GameView } from '../components/GameView';
@@ -15,8 +13,6 @@ export const MainContainer = () => {
 	const gameNotStarted = !isGameStarted && !isGameOver;
 	const gameIsStarted = isGameStarted && !isGameOver;
 	const gameIsOver = isGameOver;
-
-	console.log(isGameStarted);
 
 	return (
 		<View style={styles.container}>
@@ -33,11 +29,9 @@ export const MainContainer = () => {
 const styles = StyleSheet.create({
 	container: {
 		width: '90%',
-		height: '50%',
-		marginTop: 100,
+		marginTop: 20,
 		flexDirection: 'row',
-		flex: 1,
-		justifyContent: 'space-between',
-		alignItems: 'flex-start',
+		justifyContent: 'center',
+		alignItems: 'center',
 	},
 });

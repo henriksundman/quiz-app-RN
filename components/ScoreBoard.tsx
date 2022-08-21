@@ -30,6 +30,7 @@ export const ScoreBoard = ({ currentQuestionIndex }: ScoreBoardProps) => {
 const styles = StyleSheet.create({
 	container: {
 		flexDirection: 'row',
+		justifyContent: 'space-between',
 	},
 	textCorrect: {
 		fontSize: 20,

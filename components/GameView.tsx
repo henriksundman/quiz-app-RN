@@ -67,7 +67,7 @@ export const GameView = () => {
 	};
 
 	return (
-		<Fragment>
+		<View style={{ flex: 1 }}>
 			<ScoreBoard currentQuestionIndex={questionCounter} />
 			<View>
 				{isGameOver && <h1>Game Is Over</h1>}
@@ -87,6 +87,6 @@ export const GameView = () => {
 				)}
 				{isAnswered && <Text onPress={clickNextHandler}>Next Question</Text>}
 			</View>
-		</Fragment>
+		</View>
 	);
 };
