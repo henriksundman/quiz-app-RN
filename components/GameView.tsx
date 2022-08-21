@@ -1,5 +1,3 @@
-import { Button, View, Text, GestureResponderEvent } from 'react-native';
-
 import {
 	Fragment,
 	SyntheticEvent,
@@ -7,13 +5,20 @@ import {
 	useEffect,
 	useState,
 } from 'react';
+import {
+	ActivityIndicator,
+	Button,
+	GestureResponderEvent,
+	StyleSheet,
+	Text,
+	View,
+} from 'react-native';
 
 import { GameContext } from '../store/game-context';
 import { Answers } from './Answers';
+import { checkAnswer } from './gameScreenUtils';
 import { Question } from './Question';
 import { ScoreBoard } from './ScoreBoard';
-
-import { checkAnswer } from './gameScreenUtils';
 
 export const GameView = () => {
 	const [questionCounter, setQuestionCounter] = useState(0);
@@ -75,7 +80,11 @@ export const GameView = () => {
 			<View>
 				{isGameOver && <h1>Game Is Over</h1>}
 				{error && <h1>Something went wrong. Please try again later.</h1>}
-				{isLoading && <Text>Loading...</Text>}
+				{isLoading && (
+					<View style={{ flex: 1, justifyContent: 'center' }}>
+						<ActivityIndicator />
+					</View>
+				)}
 				{!isLoading && !error && !isGameOver && (
 					<>
 						<Question question={questions[questionCounter].question} />
@@ -89,14 +98,7 @@ export const GameView = () => {
 					</>
 				)}
 				{isAnswered && (
-					<View
-						style={{
-							width: '90%',
-							alignSelf: 'center',
-							marginLeft: 8,
-							marginTop: 12,
-						}}
-					>
+					<View style={styles.nextButton}>
 						<Button
 							onPress={clickNextHandler}
 							title={lastQuestion ? 'View Results' : 'Next Question'}
@@ -107,3 +109,12 @@ export const GameView = () => {
 		</View>
 	);
 };
+
+const styles = StyleSheet.create({
+	nextButton: {
+		width: '90%',
+		alignSelf: 'center',
+		marginLeft: 4,
+		marginTop: 20,
+	},
+});

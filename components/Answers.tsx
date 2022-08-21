@@ -46,6 +46,8 @@ export const Answers = ({
 	const correctAnswerIndex = shuffledAnswers.indexOf(correctAnswer);
 	const chosenAnswerIndex = shuffledAnswers.indexOf(chosenAnswer);
 
+	console.log(!!~correctAnswerIndex);
+
 	return (
 		<View>
 			<FlatList
@@ -76,8 +78,8 @@ const styles = StyleSheet.create({
 	},
 	answer: {
 		width: '90%',
-		marginTop: 20,
-		margin: 20,
+		marginHorizontal: 18,
+		marginVertical: 8,
 		padding: 20,
 		backgroundColor: 'lightgray',
 		elevation: 4,
