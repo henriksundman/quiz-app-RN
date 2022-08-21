@@ -1,5 +1,5 @@
 import { SyntheticEvent, useState } from 'react';
-import { FlatList, ListRenderItem, StyleSheet, Text, View } from 'react-native';
+import { FlatList, StyleSheet, Text, View } from 'react-native';
 
 import { shuffleArray } from './answersUtils';
 
@@ -43,7 +43,9 @@ export const Answers = ({
 		<View>
 			<FlatList
 				data={shuffledAnswers}
-				keyExtractor={(item) => item}
+				keyExtractor={(item) =>
+					item + Math.random().toString(36).substring(2, 8)
+				}
 				renderItem={({ item }) => (
 					<View style={styles.container}>
 						<Text style={styles.answer}>{item}</Text>
@@ -57,9 +59,10 @@ export const Answers = ({
 const styles = StyleSheet.create({
 	container: {
 		alignItems: 'center',
+		marginTop: 20,
 	},
 	answer: {
-		marginTop: 60,
+		marginTop: 20,
 		fontSize: 16,
 		textAlign: 'center',
 		margin: 20,
@@ -70,7 +73,6 @@ const styles = StyleSheet.create({
 		shadowOffset: { width: -2, height: 4 },
 		shadowOpacity: 0.2,
 		shadowRadius: 3,
-		borderRadius: 23,
 	},
 	correct: {
 		backgroundColor: '#50fa83',
