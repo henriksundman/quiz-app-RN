@@ -1,4 +1,4 @@
-import { View, Text } from 'react-native';
+import { Button, View, Text, GestureResponderEvent } from 'react-native';
 
 import {
 	Fragment,
@@ -38,10 +38,11 @@ export const GameView = () => {
 	let isLoading = questions.length === 0;
 	isLoading = error ? false : isLoading;
 
-	const clickAnswerHandler = (event: SyntheticEvent) => {
+	const clickAnswerHandler = (
+		event: GestureResponderEvent,
+		chosenAnswer: string
+	) => {
 		setIsAnswered(true);
-
-		const chosenAnswer = event.currentTarget.textContent;
 
 		chosenAnswer && setSelectedAnswer(chosenAnswer);
 		const correctAnswer = questions[questionCounter].correctAnswer;
@@ -58,8 +59,10 @@ export const GameView = () => {
 		}
 	};
 
+	let lastQuestion = questionCounter === questions.length - 1;
+
 	const clickNextHandler = () => {
-		if (questionCounter === questions.length - 1) {
+		if (lastQuestion) {
 			return gameOver();
 		}
 		setQuestionCounter((prevCount: number) => prevCount + 1);
@@ -85,7 +88,21 @@ export const GameView = () => {
 						/>
 					</>
 				)}
-				{isAnswered && <Text onPress={clickNextHandler}>Next Question</Text>}
+				{isAnswered && (
+					<View
+						style={{
+							width: '90%',
+							alignSelf: 'center',
+							marginLeft: 8,
+							marginTop: 12,
+						}}
+					>
+						<Button
+							onPress={clickNextHandler}
+							title={lastQuestion ? 'View Results' : 'Next Question'}
+						/>
+					</View>
+				)}
 			</View>
 		</View>
 	);

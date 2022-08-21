@@ -1,5 +1,12 @@
 import { SyntheticEvent, useState } from 'react';
-import { FlatList, StyleSheet, Text, View } from 'react-native';
+import {
+	FlatList,
+	GestureResponderEvent,
+	Pressable,
+	StyleSheet,
+	Text,
+	View,
+} from 'react-native';
 
 import { shuffleArray } from './answersUtils';
 
@@ -8,7 +15,7 @@ interface AnswersProps {
 	incorrectAnswers: string[];
 	isAnswered: boolean;
 	chosenAnswer: string;
-	onClickAnswer: (event: SyntheticEvent) => void;
+	onClickAnswer: (event: GestureResponderEvent, answer: string) => void;
 }
 
 export const Answers = ({
@@ -48,7 +55,14 @@ export const Answers = ({
 				}
 				renderItem={({ item }) => (
 					<View style={styles.container}>
-						<Text style={styles.answer}>{item}</Text>
+						<Pressable
+							style={({ pressed }) =>
+								pressed ? [styles.answer, styles.pressed] : styles.answer
+							}
+							onPress={(event) => onClickAnswer(event, item)}
+						>
+							<Text style={styles.answerText}>{item}</Text>
+						</Pressable>
 					</View>
 				)}
 			/>
@@ -58,21 +72,26 @@ export const Answers = ({
 
 const styles = StyleSheet.create({
 	container: {
-		alignItems: 'center',
 		marginTop: 20,
 	},
 	answer: {
+		width: '90%',
 		marginTop: 20,
-		fontSize: 16,
-		textAlign: 'center',
 		margin: 20,
 		padding: 20,
-		backgroundColor: 'white',
+		backgroundColor: 'lightgray',
 		elevation: 4,
 		shadowColor: '#171717',
 		shadowOffset: { width: -2, height: 4 },
 		shadowOpacity: 0.2,
 		shadowRadius: 3,
+	},
+	answerText: {
+		fontSize: 16,
+		textAlign: 'center',
+	},
+	pressed: {
+		opacity: 0.8,
 	},
 	correct: {
 		backgroundColor: '#50fa83',
