@@ -46,20 +46,39 @@ export const Answers = ({
 	const correctAnswerIndex = shuffledAnswers.indexOf(correctAnswer);
 	const chosenAnswerIndex = shuffledAnswers.indexOf(chosenAnswer);
 
-	console.log(!!~correctAnswerIndex);
-
 	return (
 		<View>
 			<FlatList
 				data={shuffledAnswers}
-				keyExtractor={(item) =>
-					item + Math.random().toString(36).substring(2, 8)
-				}
-				renderItem={({ item }) => (
+				keyExtractor={() => Math.random().toString(36).substring(2, 8)}
+				renderItem={({ item, index }) => (
 					<View style={styles.container}>
 						<Pressable
+							disabled={isAnswered}
 							style={({ pressed }) =>
-								pressed ? [styles.answer, styles.pressed] : styles.answer
+								pressed
+									? [
+											styles.answer,
+											styles.pressed,
+											!isAnswered && styles.unAnswered,
+											isAnswered &&
+												index === correctAnswerIndex &&
+												styles.correct,
+											isAnswered &&
+												index !== correctAnswerIndex &&
+												styles.incorrect,
+									  ]
+									: [
+											styles.answer,
+											,
+											!isAnswered && styles.unAnswered,
+											isAnswered &&
+												index === correctAnswerIndex &&
+												styles.correct,
+											isAnswered &&
+												index !== correctAnswerIndex &&
+												styles.incorrect,
+									  ]
 							}
 							onPress={(event) => onClickAnswer(event, item)}
 						>
@@ -81,7 +100,6 @@ const styles = StyleSheet.create({
 		marginHorizontal: 18,
 		marginVertical: 8,
 		padding: 20,
-		backgroundColor: 'lightgray',
 		elevation: 4,
 		shadowColor: '#171717',
 		shadowOffset: { width: -2, height: 4 },
@@ -94,6 +112,9 @@ const styles = StyleSheet.create({
 	},
 	pressed: {
 		opacity: 0.8,
+	},
+	unAnswered: {
+		backgroundColor: 'lightgray',
 	},
 	correct: {
 		backgroundColor: '#50fa83',

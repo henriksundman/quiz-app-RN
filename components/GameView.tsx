@@ -100,6 +100,7 @@ export const GameView = () => {
 				{isAnswered && (
 					<View style={styles.nextButton}>
 						<Button
+							color="#7652e3"
 							onPress={clickNextHandler}
 							title={lastQuestion ? 'View Results' : 'Next Question'}
 						/>
