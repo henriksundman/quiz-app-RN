@@ -54,7 +54,7 @@ export const GameContextProvider = ({ children }: Props) => {
 	}, []);
 
 	const gameOver = () => {
-		setIsGameOver(true);
+		setIsGameOver((prev) => !prev);
 	};
 
 	const value = {

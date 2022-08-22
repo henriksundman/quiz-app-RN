@@ -30,7 +30,7 @@ export const ScoreBoard = ({ currentQuestionIndex }: ScoreBoardProps) => {
 const styles = StyleSheet.create({
 	container: {
 		marginTop: 5,
-		marginHorizontal: 30,
+		marginHorizontal: 10,
 		flexDirection: 'row',
 		justifyContent: 'space-between',
 	},

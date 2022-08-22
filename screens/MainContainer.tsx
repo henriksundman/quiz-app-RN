@@ -30,8 +30,5 @@ const styles = StyleSheet.create({
 	container: {
 		width: '90%',
 		marginTop: 20,
-		flexDirection: 'row',
-		justifyContent: 'center',
-		alignItems: 'center',
 	},
 });

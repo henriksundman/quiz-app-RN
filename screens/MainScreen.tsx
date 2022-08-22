@@ -6,14 +6,11 @@ interface MainScreenProps {
 
 export const MainScreen = ({ children }: MainScreenProps) => {
 	const cardWidth = Math.round(useWindowDimensions().width * 0.9);
-	const cardHeightIOS = Math.round(useWindowDimensions().height * 0.8);
+	const cardHeightIOS = Math.round(useWindowDimensions().height * 0.85);
 	const cardHeightAndroid = Math.round(useWindowDimensions().height * 0.9);
-
-	console.log(cardHeightIOS, cardHeightAndroid);
 
 	const styles = StyleSheet.create({
 		card: {
-			marginTop: 20,
 			alignItems: 'center',
 			minHeight: Platform.OS === 'ios' ? cardHeightIOS : cardHeightAndroid,
 			maxHeight: Platform.OS === 'ios' ? cardHeightIOS : cardHeightAndroid,
