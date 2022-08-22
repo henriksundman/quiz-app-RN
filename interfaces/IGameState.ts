@@ -12,4 +12,6 @@ export interface IGameState {
 	error: string;
 	isGameOver: boolean;
 	gameOver: () => void;
+	reset: boolean;
+	doReset: () => void;
 }

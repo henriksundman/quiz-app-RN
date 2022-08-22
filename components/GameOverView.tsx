@@ -8,7 +8,7 @@ export const GameOverView = () => {
 		numberOfQuestions,
 		numberOfCorrectAnswers,
 		numberOfIncorrectAnswers,
-		gameOver,
+		doReset,
 	} = useContext(GameContext);
 
 	return (
@@ -16,7 +16,7 @@ export const GameOverView = () => {
 			<Text style={styles.header}>Total: {numberOfQuestions}</Text>
 			<Text style={styles.header}>Correct: {numberOfCorrectAnswers}</Text>
 			<Text style={styles.header}>Incorrect: {numberOfIncorrectAnswers}</Text>
-			<Button title="Play Again" onPress={gameOver} />
+			<Button title="Play Again" onPress={doReset} />
 		</View>
 	);
 };
