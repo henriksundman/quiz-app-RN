@@ -9,6 +9,7 @@ import {
 	ActivityIndicator,
 	Button,
 	GestureResponderEvent,
+	ScrollView,
 	StyleSheet,
 	Text,
 	View,
@@ -86,7 +87,7 @@ export const GameView = () => {
 					</View>
 				)}
 				{!isLoading && !error && !isGameOver && (
-					<>
+					<ScrollView>
 						<Question question={questions[questionCounter].question} />
 						<Answers
 							correctAnswer={questions[questionCounter].correctAnswer}
@@ -97,7 +98,7 @@ export const GameView = () => {
 							onClickNext={clickNextHandler}
 							isLastQuestion={lastQuestion}
 						/>
-					</>
+					</ScrollView>
 				)}
 				{/* {isAnswered && (
 					<View style={styles.nextButton}>

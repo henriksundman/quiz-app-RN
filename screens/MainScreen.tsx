@@ -1,5 +1,6 @@
 import {
 	Platform,
+	ScrollView,
 	StyleSheet,
 	useWindowDimensions,
 	View,

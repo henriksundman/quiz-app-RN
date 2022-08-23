@@ -7,6 +7,7 @@ import {
 	Text,
 	View,
 	Button,
+	ScrollView,
 } from 'react-native';
 
 import { shuffleArray } from './answersUtils';
@@ -53,51 +54,31 @@ export const Answers = ({
 
 	return (
 		<View>
-			<FlatList
-				data={shuffledAnswers}
-				keyExtractor={() => Math.random().toString(36).substring(2, 8)}
-				renderItem={({ item, index }) => (
-					<View style={styles.container}>
-						<Pressable
-							disabled={isAnswered}
-							style={({ pressed }) =>
-								pressed
-									? [
-											styles.answer,
-											styles.pressed,
-											!isAnswered && styles.unAnswered,
-											isAnswered &&
-												index === correctAnswerIndex &&
-												styles.correct,
-											isAnswered &&
-												index !== correctAnswerIndex &&
-												styles.incorrect,
-											isAnswered &&
-												index === chosenAnswerIndex &&
-												styles.clicked,
-									  ]
-									: [
-											styles.answer,
-											,
-											!isAnswered && styles.unAnswered,
-											isAnswered &&
-												index === correctAnswerIndex &&
-												styles.correct,
-											isAnswered &&
-												index !== correctAnswerIndex &&
-												styles.incorrect,
-											isAnswered &&
-												index === chosenAnswerIndex &&
-												styles.clicked,
-									  ]
-							}
-							onPress={(event) => onClickAnswer(event, item)}
-						>
-							<Text style={styles.answerText}>{item}</Text>
-						</Pressable>
-					</View>
-				)}
-			/>
+			<>
+				{shuffledAnswers.map((answer, index) => {
+					return (
+						<View style={styles.container}>
+							<Pressable
+								key={index}
+								disabled={isAnswered}
+								style={[
+									styles.answer,
+									!isAnswered && styles.unAnswered,
+									isAnswered && index === correctAnswerIndex && styles.correct,
+									isAnswered &&
+										index !== correctAnswerIndex &&
+										styles.incorrect,
+									isAnswered && index === chosenAnswerIndex && styles.clicked,
+								]}
+								onPress={(event) => onClickAnswer(event, answer)}
+							>
+								<Text style={styles.answerText}>{answer}</Text>
+							</Pressable>
+						</View>
+					);
+				})}
+			</>
+
 			{isAnswered && (
 				<View style={styles.nextButton}>
 					<Button
@@ -130,9 +111,6 @@ const styles = StyleSheet.create({
 		fontSize: 16,
 		textAlign: 'center',
 	},
-	pressed: {
-		opacity: 0.8,
-	},
 	unAnswered: {
 		backgroundColor: 'lightgray',
 	},
@@ -153,3 +131,25 @@ const styles = StyleSheet.create({
 		marginTop: 20,
 	},
 });
+
+// <FlatList
+// 	data={shuffledAnswers}
+// 	keyExtractor={() => Math.random().toString(36).substring(2, 8)}
+// 	renderItem={({ item, index }) => (
+// 		<View style={styles.container}>
+// 			<Pressable
+// 				disabled={isAnswered}
+// 				style={[
+// 					styles.answer,
+// 					!isAnswered && styles.unAnswered,
+// 					isAnswered && index === correctAnswerIndex && styles.correct,
+// 					isAnswered && index !== correctAnswerIndex && styles.incorrect,
+// 					isAnswered && index === chosenAnswerIndex && styles.clicked,
+// 				]}
+// 				onPress={(event) => onClickAnswer(event, item)}
+// 			>
+// 				<Text style={styles.answerText}>{item}</Text>
+// 			</Pressable>
+// 		</View>
+// 	)}
+// />;
