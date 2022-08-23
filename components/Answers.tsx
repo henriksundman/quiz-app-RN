@@ -6,6 +6,7 @@ import {
 	StyleSheet,
 	Text,
 	View,
+	Button,
 } from 'react-native';
 
 import { shuffleArray } from './answersUtils';
@@ -15,7 +16,9 @@ interface AnswersProps {
 	incorrectAnswers: string[];
 	isAnswered: boolean;
 	chosenAnswer: string;
+	isLastQuestion: boolean;
 	onClickAnswer: (event: GestureResponderEvent, answer: string) => void;
+	onClickNext: () => void;
 }
 
 export const Answers = ({
@@ -24,6 +27,8 @@ export const Answers = ({
 	onClickAnswer,
 	isAnswered,
 	chosenAnswer,
+	isLastQuestion,
+	onClickNext,
 }: AnswersProps) => {
 	const [isShuffled, setIsShuffled] = useState(false);
 	const [shuffledAnswers, setShuffledAnswers] = useState<string[]>([]);
@@ -67,6 +72,9 @@ export const Answers = ({
 											isAnswered &&
 												index !== correctAnswerIndex &&
 												styles.incorrect,
+											isAnswered &&
+												index === chosenAnswerIndex &&
+												styles.clicked,
 									  ]
 									: [
 											styles.answer,
@@ -78,6 +86,9 @@ export const Answers = ({
 											isAnswered &&
 												index !== correctAnswerIndex &&
 												styles.incorrect,
+											isAnswered &&
+												index === chosenAnswerIndex &&
+												styles.clicked,
 									  ]
 							}
 							onPress={(event) => onClickAnswer(event, item)}
@@ -87,6 +98,15 @@ export const Answers = ({
 					</View>
 				)}
 			/>
+			{isAnswered && (
+				<View style={styles.nextButton}>
+					<Button
+						color="#7652e3"
+						onPress={onClickNext}
+						title={isLastQuestion ? 'View Results' : 'Next Question'}
+					/>
+				</View>
+			)}
 		</View>
 	);
 };
@@ -124,5 +144,12 @@ const styles = StyleSheet.create({
 	},
 	clicked: {
 		borderColor: 'black',
+		borderWidth: 3,
+	},
+	nextButton: {
+		width: '90%',
+		alignSelf: 'center',
+		marginLeft: 4,
+		marginTop: 20,
 	},
 });

@@ -94,10 +94,12 @@ export const GameView = () => {
 							onClickAnswer={clickAnswerHandler}
 							isAnswered={isAnswered}
 							chosenAnswer={selectedAnswer}
+							onClickNext={clickNextHandler}
+							isLastQuestion={lastQuestion}
 						/>
 					</>
 				)}
-				{isAnswered && (
+				{/* {isAnswered && (
 					<View style={styles.nextButton}>
 						<Button
 							color="#7652e3"
@@ -105,7 +107,7 @@ export const GameView = () => {
 							title={lastQuestion ? 'View Results' : 'Next Question'}
 						/>
 					</View>
-				)}
+				)} */}
 			</View>
 		</View>
 	);
