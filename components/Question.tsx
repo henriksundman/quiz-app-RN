@@ -1,16 +1,36 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { useEffect, useState } from 'react';
+import { Button, Pressable, StyleSheet, Text, View } from 'react-native';
 
 interface QuestionProps {
 	question?: string;
 }
 
 const DUMMUQ =
-	'Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus adipisci eaque reiciendis asperiores veritatis quod! Laudantium deleniti laboriosam ut quasi fugiat rerum quod cupiditate. Dolore tenetur accusantium consequuntur quam corporis, deserunt doloremque rem nostrum dicta commodi repellat pariatur incidunt dolorem libero ipsam possimus. Non quasi voluptates recusandae nisi eaque unde?';
+	'Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus adipisci eaque reiciendis asperiores veritatis quod! Laudantium deleniti laboriosam ut quasi fugiat rerum quod cupiditate. dssdsdsdsdsdsdsdsddfdf';
 
 export const Question = ({ question }: QuestionProps) => {
+	const [showQuestion, setShowQuestion] = useState(true);
+	const [showQuestionToggle, setShowQuestionToggle] = useState(false);
+
+	useEffect(() => {
+		if (question) {
+			question.length > 220
+				? setShowQuestionToggle(true)
+				: setShowQuestionToggle(false);
+		}
+	}, [question]);
+
+	const toggleQuestion = () => {
+		setShowQuestion((prev) => !prev);
+	};
+
+	const hideQuestionTitle = showQuestion ? 'Hide Question' : 'Show Question';
 	return (
 		<View>
-			<Text style={styles.text}>{question}</Text>
+			{showQuestion && <Text style={styles.text}>{question}</Text>}
+			{showQuestionToggle && (
+				<Button title={hideQuestionTitle} onPress={toggleQuestion} />
+			)}
 		</View>
 	);
 };

@@ -1,13 +1,11 @@
-import { SyntheticEvent, useState } from 'react';
+import { useState } from 'react';
 import {
-	FlatList,
+	Button,
 	GestureResponderEvent,
 	Pressable,
 	StyleSheet,
 	Text,
 	View,
-	Button,
-	ScrollView,
 } from 'react-native';
 
 import { shuffleArray } from './answersUtils';
