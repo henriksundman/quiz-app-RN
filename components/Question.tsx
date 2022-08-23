@@ -5,9 +5,6 @@ interface QuestionProps {
 	question?: string;
 }
 
-const DUMMUQ =
-	'Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus adipisci eaque reiciendis asperiores veritatis quod! Laudantium deleniti laboriosam ut quasi fugiat rerum quod cupiditate. dssdsdsdsdsdsdsdsddfdf';
-
 export const Question = ({ question }: QuestionProps) => {
 	const [showQuestion, setShowQuestion] = useState(true);
 	const [showQuestionToggle, setShowQuestionToggle] = useState(false);

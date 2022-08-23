@@ -129,25 +129,3 @@ const styles = StyleSheet.create({
 		marginTop: 20,
 	},
 });
-
-// <FlatList
-// 	data={shuffledAnswers}
-// 	keyExtractor={() => Math.random().toString(36).substring(2, 8)}
-// 	renderItem={({ item, index }) => (
-// 		<View style={styles.container}>
-// 			<Pressable
-// 				disabled={isAnswered}
-// 				style={[
-// 					styles.answer,
-// 					!isAnswered && styles.unAnswered,
-// 					isAnswered && index === correctAnswerIndex && styles.correct,
-// 					isAnswered && index !== correctAnswerIndex && styles.incorrect,
-// 					isAnswered && index === chosenAnswerIndex && styles.clicked,
-// 				]}
-// 				onPress={(event) => onClickAnswer(event, item)}
-// 			>
-// 				<Text style={styles.answerText}>{item}</Text>
-// 			</Pressable>
-// 		</View>
-// 	)}
-// />;
