@@ -5,6 +5,9 @@ interface QuestionProps {
 	question?: string;
 }
 
+const Q =
+	'Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit molestiae minus, illo ex enim nam, minima unde hic aspernatur illum quos error ratione sed quod culpa. Officiis, odio? Quibusdam quasi nobis placeat est tempora labore modi. Veritatis, libero quisquam. Esse quos quae possimus exercitationem libero placeat voluptates quidem odio tempora.';
+
 export const Question = ({ question }: QuestionProps) => {
 	const [showQuestion, setShowQuestion] = useState(true);
 	const [showQuestionToggle, setShowQuestionToggle] = useState(false);
@@ -24,7 +27,7 @@ export const Question = ({ question }: QuestionProps) => {
 	const hideQuestionTitle = showQuestion ? 'Hide Question' : 'Show Question';
 	return (
 		<View>
-			{showQuestion && <Text style={styles.text}>{question}</Text>}
+			{showQuestion && <Text style={styles.text}>{Q}</Text>}
 			{showQuestionToggle && (
 				<Button title={hideQuestionTitle} onPress={toggleQuestion} />
 			)}

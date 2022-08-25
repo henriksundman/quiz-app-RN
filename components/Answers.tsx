@@ -3,6 +3,7 @@ import {
 	Button,
 	GestureResponderEvent,
 	Pressable,
+	ScrollView,
 	StyleSheet,
 	Text,
 	View,
@@ -51,11 +52,11 @@ export const Answers = ({
 	const chosenAnswerIndex = shuffledAnswers.indexOf(chosenAnswer);
 
 	return (
-		<View>
+		<View style={styles.container}>
 			<>
 				{shuffledAnswers.map((answer, index) => {
 					return (
-						<View style={styles.container}>
+						<View style={styles.answerContainer}>
 							<Pressable
 								key={index}
 								disabled={isAnswered}
@@ -92,6 +93,10 @@ export const Answers = ({
 
 const styles = StyleSheet.create({
 	container: {
+		height: 1000,
+	},
+
+	answerContainer: {
 		marginTop: 20,
 	},
 	answer: {
@@ -127,5 +132,6 @@ const styles = StyleSheet.create({
 		alignSelf: 'center',
 		marginLeft: 4,
 		marginTop: 20,
+		paddingBottom: 300,
 	},
 });

@@ -1,9 +1,11 @@
-import {
+import React, {
 	Fragment,
 	SyntheticEvent,
 	useContext,
 	useEffect,
 	useState,
+	useRef,
+	MutableRefObject,
 } from 'react';
 import {
 	ActivityIndicator,
@@ -13,6 +15,8 @@ import {
 	StyleSheet,
 	Text,
 	View,
+	InteractionManager,
+	_ScrollView,
 } from 'react-native';
 
 import { GameContext } from '../store/game-context';
@@ -25,6 +29,8 @@ export const GameView = () => {
 	const [questionCounter, setQuestionCounter] = useState(0);
 	const [isAnswered, setIsAnswered] = useState(false);
 	const [selectedAnswer, setSelectedAnswer] = useState('');
+
+	const scrollRef = useRef<ScrollView | undefined>();
 
 	const {
 		loadQuestions,
@@ -40,6 +46,10 @@ export const GameView = () => {
 	useEffect(() => {
 		loadQuestions(numberOfQuestions);
 	}, [numberOfQuestions, loadQuestions]);
+
+	useEffect(() => {
+		scrollRef?.current?.scrollTo({ x: 0, y: 0 });
+	});
 
 	let isLoading = questions.length === 0;
 	isLoading = error ? false : isLoading;
@@ -87,7 +97,7 @@ export const GameView = () => {
 					</View>
 				)}
 				{!isLoading && !error && !isGameOver && (
-					<ScrollView>
+					<ScrollView ref={scrollRef}>
 						<Question question={questions[questionCounter].question} />
 						<Answers
 							correctAnswer={questions[questionCounter].correctAnswer}
