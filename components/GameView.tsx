@@ -1,4 +1,10 @@
-import { useContext, useEffect, useState } from 'react';
+import React, {
+	useContext,
+	useEffect,
+	useLayoutEffect,
+	useRef,
+	useState,
+} from 'react';
 import {
 	ActivityIndicator,
 	GestureResponderEvent,
@@ -17,6 +23,8 @@ export const GameView = () => {
 	const [isAnswered, setIsAnswered] = useState(false);
 	const [selectedAnswer, setSelectedAnswer] = useState('');
 
+	const scrollRef = useRef<ScrollView | null>(null);
+
 	const {
 		loadQuestions,
 		numberOfQuestions,
@@ -31,6 +39,10 @@ export const GameView = () => {
 	useEffect(() => {
 		loadQuestions(numberOfQuestions);
 	}, [numberOfQuestions, loadQuestions]);
+
+	useLayoutEffect(() => {
+		scrollRef?.current?.scrollTo({ x: 0, y: 0 });
+	});
 
 	let isLoading = questions.length === 0;
 	isLoading = error ? false : isLoading;
@@ -78,7 +90,7 @@ export const GameView = () => {
 					</View>
 				)}
 				{!isLoading && !error && !isGameOver && (
-					<ScrollView style={{ flex: 1 }}>
+					<ScrollView ref={scrollRef} style={{ flex: 1 }}>
 						<View
 							style={{
 								alignItems: 'center',
@@ -86,6 +98,7 @@ export const GameView = () => {
 						>
 							<Question question={questions[questionCounter].question} />
 						</View>
+
 						<Answers
 							correctAnswer={questions[questionCounter].correctAnswer}
 							incorrectAnswers={questions[questionCounter].incorrectAnswers}

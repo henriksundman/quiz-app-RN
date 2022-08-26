@@ -51,13 +51,12 @@ export const Answers = ({
 	const chosenAnswerIndex = shuffledAnswers.indexOf(chosenAnswer);
 
 	return (
-		<View>
+		<View style={styles.container}>
 			<>
 				{shuffledAnswers.map((answer, index) => {
 					return (
-						<View style={styles.container}>
+						<View key={index} style={styles.answerContainer}>
 							<Pressable
-								key={index}
 								disabled={isAnswered}
 								style={[
 									styles.answer,
@@ -92,6 +91,10 @@ export const Answers = ({
 
 const styles = StyleSheet.create({
 	container: {
+		height: 1000,
+	},
+
+	answerContainer: {
 		marginTop: 20,
 	},
 	answer: {
