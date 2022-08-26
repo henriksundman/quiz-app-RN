@@ -1,17 +1,8 @@
-import {
-	Fragment,
-	SyntheticEvent,
-	useContext,
-	useEffect,
-	useState,
-} from 'react';
+import { useContext, useEffect, useState } from 'react';
 import {
 	ActivityIndicator,
-	Button,
 	GestureResponderEvent,
 	ScrollView,
-	StyleSheet,
-	Text,
 	View,
 } from 'react-native';
 
@@ -106,25 +97,7 @@ export const GameView = () => {
 						/>
 					</ScrollView>
 				)}
-				{/* {isAnswered && (
-					<View style={styles.nextButton}>
-						<Button
-							color="#7652e3"
-							onPress={clickNextHandler}
-							title={lastQuestion ? 'View Results' : 'Next Question'}
-						/>
-					</View>
-				)} */}
 			</View>
 		</View>
 	);
 };
-
-const styles = StyleSheet.create({
-	nextButton: {
-		width: '90%',
-		alignSelf: 'center',
-		marginLeft: 4,
-		marginTop: 20,
-	},
-});
