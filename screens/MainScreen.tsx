@@ -28,6 +28,7 @@ export const MainScreen = ({ children }: MainScreenProps) => {
 			shadowOpacity: 0.2,
 			shadowRadius: 3,
 			borderRadius: 6,
+			overflow: 'hidden',
 		},
 	});
 	return <View style={styles.card}>{children}</View>;

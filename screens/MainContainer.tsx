@@ -30,6 +30,5 @@ const styles = StyleSheet.create({
 		justifyContent: 'center',
 		width: '90%',
 		marginTop: 20,
-		overflow: 'hidden',
 	},
 });

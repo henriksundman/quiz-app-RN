@@ -27,8 +27,7 @@ export const Question = ({ question }: QuestionProps) => {
 	const hideQuestionTitle = showQuestion ? 'Hide Question' : 'Show Question';
 	return (
 		<View style={{ width: '100%', alignItems: 'center' }}>
-			{showQuestion && <Text style={styles.text}>{question}</Text>}
-
+			{showQuestion && <Text style={styles.text}>{Q}</Text>}
 			{showQuestionToggle && (
 				<Button title={hideQuestionTitle} onPress={toggleQuestion} />
 			)}
