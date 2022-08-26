@@ -1,24 +1,15 @@
 import React, {
-	Fragment,
-	SyntheticEvent,
 	useContext,
 	useEffect,
-	useState,
-	useRef,
-	MutableRefObject,
-	LegacyRef,
 	useLayoutEffect,
+	useRef,
+	useState,
 } from 'react';
 import {
 	ActivityIndicator,
-	Button,
 	GestureResponderEvent,
 	ScrollView,
-	StyleSheet,
-	Text,
 	View,
-	InteractionManager,
-	_ScrollView,
 } from 'react-native';
 
 import { GameContext } from '../store/game-context';
@@ -112,25 +103,7 @@ export const GameView = () => {
 						/>
 					</ScrollView>
 				)}
-				{/* {isAnswered && (
-					<View style={styles.nextButton}>
-						<Button
-							color="#7652e3"
-							onPress={clickNextHandler}
-							title={lastQuestion ? 'View Results' : 'Next Question'}
-						/>
-					</View>
-				)} */}
 			</View>
 		</View>
 	);
 };
-
-const styles = StyleSheet.create({
-	nextButton: {
-		width: '90%',
-		alignSelf: 'center',
-		marginLeft: 4,
-		marginTop: 20,
-	},
-});
