@@ -132,6 +132,5 @@ const styles = StyleSheet.create({
 		alignSelf: 'center',
 		marginLeft: 4,
 		marginTop: 20,
-		paddingBottom: 300,
 	},
 });

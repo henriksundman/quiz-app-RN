@@ -6,6 +6,8 @@ import React, {
 	useState,
 	useRef,
 	MutableRefObject,
+	LegacyRef,
+	useLayoutEffect,
 } from 'react';
 import {
 	ActivityIndicator,
@@ -30,7 +32,7 @@ export const GameView = () => {
 	const [isAnswered, setIsAnswered] = useState(false);
 	const [selectedAnswer, setSelectedAnswer] = useState('');
 
-	const scrollRef = useRef<ScrollView | undefined>();
+	const scrollRef = useRef<ScrollView | null>(null);
 
 	const {
 		loadQuestions,
@@ -47,7 +49,7 @@ export const GameView = () => {
 		loadQuestions(numberOfQuestions);
 	}, [numberOfQuestions, loadQuestions]);
 
-	useEffect(() => {
+	useLayoutEffect(() => {
 		scrollRef?.current?.scrollTo({ x: 0, y: 0 });
 	});
 
