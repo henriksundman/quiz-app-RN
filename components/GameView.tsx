@@ -87,8 +87,14 @@ export const GameView = () => {
 					</View>
 				)}
 				{!isLoading && !error && !isGameOver && (
-					<ScrollView>
-						<Question question={questions[questionCounter].question} />
+					<ScrollView style={{ flex: 1 }}>
+						<View
+							style={{
+								alignItems: 'center',
+							}}
+						>
+							<Question question={questions[questionCounter].question} />
+						</View>
 						<Answers
 							correctAnswer={questions[questionCounter].correctAnswer}
 							incorrectAnswers={questions[questionCounter].incorrectAnswers}

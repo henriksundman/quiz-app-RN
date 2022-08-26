@@ -16,18 +16,18 @@ export const MainContainer = () => {
 
 	return (
 		<View style={styles.container}>
-			<Text>
-				<MainScreen>
-					{gameNotStarted && <StartView />}
-					{gameIsStarted && <GameView />}
-					{gameIsOver && <GameOverView />}
-				</MainScreen>
-			</Text>
+			<MainScreen>
+				{gameNotStarted && <StartView />}
+				{gameIsStarted && <GameView />}
+				{gameIsOver && <GameOverView />}
+			</MainScreen>
 		</View>
 	);
 };
 const styles = StyleSheet.create({
 	container: {
+		flex: 1,
+		justifyContent: 'center',
 		width: '90%',
 		marginTop: 20,
 	},
