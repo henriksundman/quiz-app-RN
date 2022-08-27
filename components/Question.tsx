@@ -5,32 +5,15 @@ interface QuestionProps {
 	question?: string;
 }
 
-const Q =
-	'Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit molestiae minus, illo ex enim nam, minima unde hic aspernatur illum quos error ratione sed quod culpa. Officiis, odio? Quibusdam quasi nobis placeat est tempora labore modi. Veritatis, libero quisquam. Esse quos quae possimus exercitationem libero placeat voluptates quidem odio tempora.';
+const DUMMY_QUESTION =
+	'Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit molestiae minus, illo ex enim nam, minima unde hic aspernatur illum quos error ratione sed quod culpa. Officiis, odio? Quibusdam quasi nobis placeat est tempora labore modi. Veritatis, libero quisquam. Esse quos quae possimus exercitationem libero placeat voluptates quidem odio tempora. sdsdfsdflas;dlkfja;lsdkfj asl; laksdjf;lask laskdjf ;alskdjf a;lskdj fasdlkj ajsd f';
 
 export const Question = ({ question }: QuestionProps) => {
-	const [showQuestion, setShowQuestion] = useState(true);
-	const [showQuestionToggle, setShowQuestionToggle] = useState(false);
+	question = DUMMY_QUESTION;
 
-	useEffect(() => {
-		if (question) {
-			question.length > 220
-				? setShowQuestionToggle(true)
-				: setShowQuestionToggle(false);
-		}
-	}, [question]);
-
-	const toggleQuestion = () => {
-		setShowQuestion((prev) => !prev);
-	};
-
-	const hideQuestionTitle = showQuestion ? 'Hide Question' : 'Show Question';
 	return (
 		<View style={{ width: '100%', alignItems: 'center' }}>
-			{showQuestion && <Text style={styles.text}>{question}</Text>}
-			{showQuestionToggle && (
-				<Button title={hideQuestionTitle} onPress={toggleQuestion} />
-			)}
+			<Text style={styles.text}>{question}</Text>
 		</View>
 	);
 };
