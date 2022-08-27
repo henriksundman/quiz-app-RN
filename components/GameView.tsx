@@ -1,10 +1,4 @@
-import React, {
-	useContext,
-	useEffect,
-	useLayoutEffect,
-	useRef,
-	useState,
-} from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import {
 	ActivityIndicator,
 	GestureResponderEvent,
@@ -40,7 +34,7 @@ export const GameView = () => {
 		loadQuestions(numberOfQuestions);
 	}, [numberOfQuestions, loadQuestions]);
 
-	useLayoutEffect(() => {
+	useEffect(() => {
 		scrollRef?.current?.scrollTo({ x: 0, y: 0 });
 	});
 
@@ -80,7 +74,7 @@ export const GameView = () => {
 
 	return (
 		<View style={{ flex: 1 }}>
-			<ScoreBoard currentQuestionIndex={questionCounter} />
+			{!isLoading && <ScoreBoard currentQuestionIndex={questionCounter} />}
 			<View>
 				{isGameOver && <h1>Game Is Over</h1>}
 				{error && <h1>Something went wrong. Please try again later.</h1>}

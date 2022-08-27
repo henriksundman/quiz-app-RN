@@ -91,7 +91,7 @@ export const Answers = ({
 
 const styles = StyleSheet.create({
 	container: {
-		height: 1000,
+		height: 700,
 	},
 
 	answerContainer: {
