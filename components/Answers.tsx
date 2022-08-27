@@ -33,10 +33,13 @@ export const Answers = ({
 	const [shuffledAnswers, setShuffledAnswers] = useState<string[]>([]);
 	const [previousCorrectAnswer, setPreviousCorrectAnswer] = useState('');
 
-	if (previousCorrectAnswer === '') {
+	const isFirstQuestion = previousCorrectAnswer === '';
+	const isNotFirstQuestion = previousCorrectAnswer !== correctAnswer;
+
+	if (isFirstQuestion) {
 		setPreviousCorrectAnswer(correctAnswer);
-	} else if (previousCorrectAnswer !== correctAnswer) {
-		setIsShuffled(false);
+	} else if (isNotFirstQuestion) {
+		setIsShuffled(false); // "Unlock" shuffle
 		setPreviousCorrectAnswer(correctAnswer);
 	}
 
@@ -44,7 +47,7 @@ export const Answers = ({
 
 	if (!isShuffled) {
 		setShuffledAnswers(shuffleArray(allAnswers));
-		setIsShuffled(true);
+		setIsShuffled(true); // "Lock" shuffle
 	}
 
 	const correctAnswerIndex = shuffledAnswers.indexOf(correctAnswer);

@@ -76,7 +76,6 @@ export const GameView = () => {
 		<View style={{ flex: 1 }}>
 			{!isLoading && <ScoreBoard currentQuestionIndex={questionCounter} />}
 			<View>
-				{isGameOver && <h1>Game Is Over</h1>}
 				{error && <h1>Something went wrong. Please try again later.</h1>}
 				{isLoading && (
 					<View style={{ flex: 1, justifyContent: 'center' }}>
