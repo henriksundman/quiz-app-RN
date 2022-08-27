@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 
 import { GameOverView } from '../components/GameOverView';
 import { GameView } from '../components/GameView';

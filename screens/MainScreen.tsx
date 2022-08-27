@@ -1,10 +1,4 @@
-import {
-	Platform,
-	ScrollView,
-	StyleSheet,
-	useWindowDimensions,
-	View,
-} from 'react-native';
+import { Platform, StyleSheet, useWindowDimensions, View } from 'react-native';
 
 interface MainScreenProps {
 	children: React.ReactNode;
